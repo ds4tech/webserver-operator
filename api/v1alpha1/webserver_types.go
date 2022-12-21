@@ -25,17 +25,24 @@ import (
 
 // WebserverSpec defines the desired state of Webserver
 type WebserverSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
-
-	// Foo string `json:"foo,omitempty"`
+	// Size defines the number of Webserver instances
+	// The following markers will use OpenAPI v3 schema to validate the value
+	// +kubebuilder:validation:Minimum=1
+	// +kubebuilder:validation:Maximum=3
+	// +kubebuilder:validation:ExclusiveMaximum=false
 	Size int32 `json:"size,omitempty"`
 }
 
 // WebserverStatus defines the observed state of Webserver
 type WebserverStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
+	// Represents the observations of a Webserver's current state.
+	// Webserver.status.conditions.type are: "Available", "Progressing", and "Degraded"
+	// Webserver.status.conditions.status are one of True, False, Unknown.
+	// Webserver.status.conditions.reason the value should be a CamelCase string and producers of specific
+	// condition types may define expected values and meanings for this field, and whether the values
+	// are considered a guaranteed API.
+	// Webserver.status.conditions.Message is a human readable message indicating details about the transition.
 	Conditions []metav1.Condition `json:"conditions,omitempty" patchStrategy:"merge" patchMergeKey:"type" protobuf:"bytes,1,rep,name=conditions"`
 }
 
