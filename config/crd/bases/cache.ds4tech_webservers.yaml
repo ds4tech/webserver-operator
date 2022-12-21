@@ -5,9 +5,9 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.10.0
   creationTimestamp: null
-  name: webservers.cache.ds4tech.com
+  name: webservers.cache.ds4tech
 spec:
-  group: cache.ds4tech.com
+  group: cache.ds4tech
   names:
     kind: Webserver
     listKind: WebserverList

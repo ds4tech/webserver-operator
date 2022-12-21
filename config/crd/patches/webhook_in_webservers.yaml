@@ -2,7 +2,7 @@
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
-  name: webservers.cache.ds4tech.com
+  name: webservers.cache.ds4tech
 spec:
   conversion:
     strategy: Webhook

@@ -18,7 +18,7 @@ rules:
   - update
   - watch
 - apiGroups:
-  - cache.ds4tech.com
+  - cache.ds4tech
   resources:
   - webservers
   verbs:
@@ -30,13 +30,13 @@ rules:
   - update
   - watch
 - apiGroups:
-  - cache.ds4tech.com
+  - cache.ds4tech
   resources:
   - webservers/finalizers
   verbs:
   - update
 - apiGroups:
-  - cache.ds4tech.com
+  - cache.ds4tech
   resources:
   - webservers/status
   verbs:
