@@ -22,6 +22,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
+	"sigs.k8s.io/controller-runtime/pkg/controller"
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
 	cachev1alpha1 "github.com/ds4tech/webserver-operator/api/v1alpha1"
@@ -33,9 +34,12 @@ type WebserverReconciler struct {
 	Scheme *runtime.Scheme
 }
 
-//+kubebuilder:rbac:groups=cache.ds4tech.com,resources=webservers,verbs=get;list;watch;create;update;patch;delete
-//+kubebuilder:rbac:groups=cache.ds4tech.com,resources=webservers/status,verbs=get;update;patch
-//+kubebuilder:rbac:groups=cache.ds4tech.com,resources=webservers/finalizers,verbs=update
+//+kubebuilder:rbac:groups=cache.example.com,resources=memcacheds,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=cache.example.com,resources=memcacheds/status,verbs=get;update;patch
+//+kubebuilder:rbac:groups=cache.example.com,resources=memcacheds/finalizers,verbs=update
+//+kubebuilder:rbac:groups=core,resources=events,verbs=create;patch
+//+kubebuilder:rbac:groups=apps,resources=deployments,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=core,resources=pods,verbs=get;list;watch
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.
@@ -49,14 +53,17 @@ type WebserverReconciler struct {
 func (r *WebserverReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	_ = log.FromContext(ctx)
 
-	// TODO(user): your logic here
+	webserver := &cachev1alpha1.Webserver{}
+	err := r.Get(ctx, req.NamespacedName, webserver)
 
-	return ctrl.Result{}, nil
+	return ctrl.Result{}, err
 }
 
 // SetupWithManager sets up the controller with the Manager.
 func (r *WebserverReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
 		For(&cachev1alpha1.Webserver{}).
+		Owns(&appsv1.Deployment{}).
+		WithOptions(controller.Options{MaxConcurrentReconciles: 2}).
 		Complete(r)
 }
