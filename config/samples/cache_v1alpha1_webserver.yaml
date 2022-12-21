@@ -1,4 +1,4 @@
-apiVersion: cache.ds4tech.com/v1alpha1
+apiVersion: cache.ds4tech/v1alpha1
 kind: Webserver
 metadata:
   labels:

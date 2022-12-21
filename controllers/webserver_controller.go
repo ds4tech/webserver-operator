@@ -19,13 +19,13 @@ package controllers
 import (
 	"context"
 
+	cachev1alpha1 "github.com/ds4tech/webserver-operator/api/v1alpha1"
+	appsv1 "k8s.io/api/apps/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/controller"
 	"sigs.k8s.io/controller-runtime/pkg/log"
-
-	cachev1alpha1 "github.com/ds4tech/webserver-operator/api/v1alpha1"
 )
 
 // WebserverReconciler reconciles a Webserver object
