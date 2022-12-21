@@ -9,4 +9,4 @@ metadata:
     app.kubernetes.io/created-by: webserver-operator
   name: webserver-sample
 spec:
-  # TODO(user): Add fields here
+  size: 3
