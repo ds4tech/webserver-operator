@@ -1,0 +1,6 @@
+# Use the 'create api' subcommand to add watches to this file.
+- group: demo.ds4tech.github.io
+  version: v1
+  kind: Webserver
+  chart: helm-charts/webserver
+#+kubebuilder:scaffold:watch

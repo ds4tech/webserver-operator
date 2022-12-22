@@ -1,19 +1,16 @@
-domain: ds4tech
+domain: ds4tech.github.io
 layout:
-- go.kubebuilder.io/v3
+- helm.sdk.operatorframework.io/v1
 plugins:
   manifests.sdk.operatorframework.io/v2: {}
   scorecard.sdk.operatorframework.io/v2: {}
 projectName: webserver-operator
-repo: github.com/ds4tech/webserver-operator
 resources:
 - api:
     crdVersion: v1
     namespaced: true
-  controller: true
-  domain: ds4tech
-  group: cache
+  domain: ds4tech.github.io
+  group: demo
   kind: Webserver
-  path: github.com/ds4tech/webserver-operator/api/v1alpha1
-  version: v1alpha1
+  version: v1
 version: "3"
