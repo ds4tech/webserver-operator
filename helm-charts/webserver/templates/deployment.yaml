@@ -37,6 +37,9 @@ spec:
             - name: http
               containerPort: 9090
               protocol: TCP
+          env:
+          - name: ENV
+            value: "Webserver-Operator"
           livenessProbe:
             httpGet:
               path: /
